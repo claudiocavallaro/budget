@@ -14,6 +14,7 @@ public class MetodoDAO {
 	private static final MetodoDAO INSTANCE = new MetodoDAO();
 	
 	private static final String SELECT_ALL = "select * from budget.metodo;";
+	private static final String SELECT_ID = "select id from budget.metodo where tipo = ?;";
 	
 	private static final String INSERT = "insert into budget.metodo(tipo) values (?);";
 
@@ -60,6 +61,26 @@ public class MetodoDAO {
 		}
 		
 		return metodi;
+	}
+
+	public Long getId(String tipo) {
+		Long id = null;
+		try (final Connection conn = DBManager.createConnection();
+			 final PreparedStatement statement = conn.prepareStatement(SELECT_ID);) {
+			statement.setString(1, tipo);
+			statement.execute();
+			ResultSet result = statement.getResultSet();
+
+			while (result.next()) {
+
+				id = result.getLong("id");
+
+			}
+		} catch (SQLException s) {
+			s.printStackTrace();
+		}
+
+		return id;
 	}
 
 }
