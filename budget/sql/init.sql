@@ -10,7 +10,6 @@ CREATE INDEX metodo_DB_ID
  CREATE table "budget".pagamento_effettuato(
 	id serial primary key,
 	importo numeric(14,4),
-	categoria varchar(255),
 	note varchar(255),
 	data date,
 	metodo serial references "budget".metodo(id)
@@ -21,7 +20,7 @@ CREATE INDEX pagamento_effettuato_DB_ID
 CREATE table "budget".pagamento_noto(
 	id serial primary key,
 	importo numeric(14,4),
-	nome varchar(255),
+	note varchar(255),
 	data date,
 	segnalato boolean,
 	metodo serial references "budget".metodo(id)

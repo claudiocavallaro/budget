@@ -11,8 +11,8 @@ public class PagamentoNoto {
     @JsonProperty("importo")
     private BigDecimal importo;
 
-    @JsonProperty("nome")
-    private String nome;
+    @JsonProperty("note")
+    private String note;
 
     @JsonProperty("data")
     private String data;
@@ -20,15 +20,13 @@ public class PagamentoNoto {
     @JsonProperty("metodo")
     private String metodo;
 
-    @JsonProperty("segnalato")
     private String segnalato;
 
-    public PagamentoNoto(BigDecimal importo, String nome, String data, String metodo, String segnalato) {
+    public PagamentoNoto(BigDecimal importo, String note, String data, String metodo) {
         this.importo = importo;
-        this.nome = nome;
+        this.note = note;
         this.data = data;
         this.metodo = metodo;
-        this.segnalato = segnalato;
     }
 
     public long getId() {
@@ -47,12 +45,12 @@ public class PagamentoNoto {
         this.importo = importo;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNote() {
+        return note;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public String getData() {
@@ -84,7 +82,7 @@ public class PagamentoNoto {
         return "PagamentoNoto{" +
                 "id=" + id +
                 ", importo=" + importo +
-                ", nome='" + nome + '\'' +
+                ", note='" + note + '\'' +
                 ", data='" + data + '\'' +
                 ", metodo='" + metodo + '\'' +
                 ", segnalato='" + segnalato + '\'' +

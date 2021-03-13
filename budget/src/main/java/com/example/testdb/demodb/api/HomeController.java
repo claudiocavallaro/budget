@@ -10,7 +10,7 @@ public class HomeController {
 	@GetMapping("/home")
 	@ResponseBody
 	public String home() {
-		return "HOME CONTROLLER";
+		return "It's working !!!";
 	}
 
 

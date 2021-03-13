@@ -1,18 +1,14 @@
 package com.example.testdb.demodb.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import java.math.BigDecimal;
+import lombok.Data;
 
 public class PagamentoEffettuato {
 
     private long id;
 
     @JsonProperty("importo")
-    private BigDecimal importo;
-
-    @JsonProperty("categoria")
-    private String categoria;
+    private String importo;
 
     @JsonProperty("note")
     private String note;
@@ -23,12 +19,14 @@ public class PagamentoEffettuato {
     @JsonProperty("metodo")
     private String metodo;
 
-    public PagamentoEffettuato(BigDecimal importo, String categoria, String note, String data, String metodo) {
+    public PagamentoEffettuato(String importo, String note, String data, String metodo) {
         this.importo = importo;
-        this.categoria = categoria;
         this.note = note;
         this.data = data;
         this.metodo = metodo;
+    }
+
+    public PagamentoEffettuato() {
     }
 
     public long getId() {
@@ -39,20 +37,12 @@ public class PagamentoEffettuato {
         this.id = id;
     }
 
-    public BigDecimal getImporto() {
+    public String getImporto() {
         return importo;
     }
 
-    public void setImporto(BigDecimal importo) {
+    public void setImporto(String importo) {
         this.importo = importo;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
     }
 
     public String getNote() {
@@ -84,7 +74,6 @@ public class PagamentoEffettuato {
         return "PagamentoEffettuato{" +
                 "id=" + id +
                 ", importo=" + importo +
-                ", categoria='" + categoria + '\'' +
                 ", note='" + note + '\'' +
                 ", data='" + data + '\'' +
                 ", metodo='" + metodo + '\'' +

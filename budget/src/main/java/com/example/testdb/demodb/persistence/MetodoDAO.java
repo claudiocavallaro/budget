@@ -1,12 +1,22 @@
 package com.example.testdb.demodb.persistence;
 
+import com.example.testdb.demodb.model.Metodo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MetodoDAO {
 
 	private static final MetodoDAO INSTANCE = new MetodoDAO();
 	
-	private static final String SELECT_ALL = "select * from db.userdb;";
+	private static final String SELECT_ALL = "select * from budget.metodo;";
+	private static final String SELECT_ID = "select id from budget.metodo where tipo = ?;";
 	
-	private static final String INSERT = "insert into db.userdb(nome, cognome) values ( ?, ?);";
+	private static final String INSERT = "insert into budget.metodo(tipo) values (?);";
 
 	private MetodoDAO() {
 	}
@@ -15,13 +25,12 @@ public class MetodoDAO {
 		return INSTANCE;
 	}
 	
-	/*public boolean insert(String nome, String cognome) {
+	public boolean insert(String tipo) {
 		boolean flag = true;
 		try (final Connection conn = DBManager.createConnection();
-				final PreparedStatement statement = conn.prepareStatement(INSERT);) {
+			 final PreparedStatement statement = conn.prepareStatement(INSERT);) {
 			
-			statement.setString(1, nome);
-			statement.setString(2, cognome);
+			statement.setString(1, tipo);
 			statement.execute();
 			
 		}catch(SQLException s) {
@@ -32,7 +41,7 @@ public class MetodoDAO {
 	}
 
 	public List<Metodo> get() {
-		final List<Metodo> utenti = new ArrayList<>();
+		final List<Metodo> metodi = new ArrayList<>();
 		try (final Connection conn = DBManager.createConnection();
 				final PreparedStatement statement = conn.prepareStatement(SELECT_ALL);) {
 
@@ -40,19 +49,38 @@ public class MetodoDAO {
 			ResultSet result = statement.getResultSet();
 			
 			while (result.next()) {
-				final Metodo user = new Metodo();
-				user.setId(result.getLong("id"));
-				user.setNome(result.getString("nome"));
-				user.setCognome(result.getString("cognome"));
+				final Metodo metodo = new Metodo();
+				metodo.setId(result.getLong("id"));
+				metodo.setTipo(result.getString("tipo"));
 				
-				utenti.add(user);
+				metodi.add(metodo);
 				
 			}
 		} catch (SQLException s) {
 			s.printStackTrace();
 		}
 		
-		return utenti;
-	}*/
+		return metodi;
+	}
+
+	public Long getId(String tipo) {
+		Long id = null;
+		try (final Connection conn = DBManager.createConnection();
+			 final PreparedStatement statement = conn.prepareStatement(SELECT_ID);) {
+			statement.setString(1, tipo);
+			statement.execute();
+			ResultSet result = statement.getResultSet();
+
+			while (result.next()) {
+
+				id = result.getLong("id");
+
+			}
+		} catch (SQLException s) {
+			s.printStackTrace();
+		}
+
+		return id;
+	}
 
 }
