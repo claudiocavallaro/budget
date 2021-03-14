@@ -18,6 +18,11 @@ public class PagamentiService {
         return gson.toJson(pagamentoDAO.get());
     }
 
+    public String getMonth(String month){
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(pagamentoDAO.getMonth(month));
+    }
+
     public String insert(PagamentoEffettuato pagamentoEffettuato){
         String metodo = pagamentoEffettuato.getMetodo();
         Long id = metodoDAO.getId(metodo);
