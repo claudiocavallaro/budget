@@ -48,7 +48,7 @@ public class PagamentoDAO {
 
                 pagamento.setId(result.getLong("id"));
                 pagamento.setData(result.getDate("data").toString());
-                pagamento.setImporto(result.getBigDecimal("importo").toString());
+                pagamento.setImporto(result.getBigDecimal("importo"));
                 pagamento.setMetodo(result.getString("tipo"));
                 pagamento.setNote(result.getString("note"));
                 pagamenti.add(pagamento);
@@ -74,7 +74,7 @@ public class PagamentoDAO {
 
                 pagamento.setId(result.getLong("id"));
                 pagamento.setData(result.getDate("data").toString());
-                pagamento.setImporto(result.getBigDecimal("importo").toString());
+                pagamento.setImporto(result.getBigDecimal("importo"));
                 pagamento.setMetodo(result.getString("tipo"));
                 pagamento.setNote(result.getString("note"));
                 pagamenti.add(pagamento);
