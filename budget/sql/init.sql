@@ -2,7 +2,7 @@ create schema budget;
 
 CREATE table "budget".metodo(
 	id serial primary key,
-	tipo varchar(255)
+	tipo varchar(255) UNIQUE
 );
 CREATE INDEX metodo_DB_ID
   ON "budget".metodo (ID);

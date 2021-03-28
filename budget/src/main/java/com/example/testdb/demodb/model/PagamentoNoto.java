@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.math.BigDecimal;
 
-public class PagamentoNoto extends PagamentoEffettuato {
+public class PagamentoNoto {
 
     private long id;
 
