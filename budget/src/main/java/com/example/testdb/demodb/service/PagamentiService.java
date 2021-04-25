@@ -27,12 +27,23 @@ public class PagamentiService {
         String metodo = pagamentoEffettuato.getMetodo();
         Long id = metodoDAO.getId(metodo);
         if (id != null){
-            boolean flag = pagamentoDAO.insert(pagamentoEffettuato.getImporto(), pagamentoEffettuato.getNote(), pagamentoEffettuato.getData(), id);
-            if (flag){
-                return "OK";
+            if (!pagamentoEffettuato.isRecurring()){
+                boolean flag = pagamentoDAO.insert(pagamentoEffettuato.getImporto(), pagamentoEffettuato.getNote(), pagamentoEffettuato.getData(), id, pagamentoEffettuato.isRecurring());
+                if (flag){
+                    return "OK";
+                }
+            } else {
+                if (pagamentoEffettuato.getRecurringType() == null || pagamentoEffettuato.getRecurringType().isEmpty()){
+                    //default
+                    pagamentoEffettuato.setRecurringType("mensile");
+                }
+                boolean flag = pagamentoDAO.insertWithRecurring(pagamentoEffettuato.getImporto(), pagamentoEffettuato.getNote(), pagamentoEffettuato.getData(), id, pagamentoEffettuato.isRecurring(), pagamentoEffettuato.getRecurringType());
+                if (flag){
+                    return "OK";
+                }
             }
         }
-        return "NOT INSERTED";
+        return "NOT INSERTED! PROBLEMS WITH PAYMENT METHOD";
     }
 
 }
