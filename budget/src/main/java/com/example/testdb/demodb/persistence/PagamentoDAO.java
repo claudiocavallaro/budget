@@ -48,7 +48,7 @@ public class PagamentoDAO {
 
                 pagamento.setId(result.getLong("id"));
                 pagamento.setData(result.getDate("data").toString());
-                pagamento.setImporto(result.getBigDecimal("importo").toString());
+                pagamento.setImporto(result.getBigDecimal("importo"));
                 pagamento.setMetodo(result.getString("tipo"));
                 pagamento.setNote(result.getString("note"));
                 pagamenti.add(pagamento);
@@ -74,7 +74,7 @@ public class PagamentoDAO {
 
                 pagamento.setId(result.getLong("id"));
                 pagamento.setData(result.getDate("data").toString());
-                pagamento.setImporto(result.getBigDecimal("importo").toString());
+                pagamento.setImporto(result.getBigDecimal("importo"));
                 pagamento.setMetodo(result.getString("tipo"));
                 pagamento.setNote(result.getString("note"));
                 pagamenti.add(pagamento);
@@ -87,19 +87,19 @@ public class PagamentoDAO {
         return pagamenti;
     }
 
-    public boolean insert(String importo, String note, String data, Long metodo) {
+    public boolean insert(BigDecimal importo, String note, String data, Long metodo) {
         boolean flag = true;
         try (final Connection conn = DBManager.createConnection();
              final PreparedStatement statement = conn.prepareStatement(INSERT);) {
 
-            statement.setBigDecimal(1, new BigDecimal(importo));
+            statement.setBigDecimal(1, importo);
             statement.setString(2, note);
             statement.setString(3, data);
             statement.setLong(4, metodo);
             statement.execute();
 
         }catch(SQLException s) {
-            logger.error("Formato data non corretto !!");
+            logger.error("Formato data non corretto !! Usare yyyy-MM-dd");
             s.printStackTrace();
             flag = false;
         }

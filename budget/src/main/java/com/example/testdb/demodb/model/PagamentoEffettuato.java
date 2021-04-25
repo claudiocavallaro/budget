@@ -2,12 +2,14 @@ package com.example.testdb.demodb.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
+
 public class PagamentoEffettuato {
 
     private long id;
 
     @JsonProperty("importo")
-    private String importo;
+    private BigDecimal importo;
 
     @JsonProperty("note")
     private String note;
@@ -18,7 +20,7 @@ public class PagamentoEffettuato {
     @JsonProperty("metodo")
     private String metodo;
 
-    public PagamentoEffettuato(String importo, String note, String data, String metodo) {
+    public PagamentoEffettuato(BigDecimal importo, String note, String data, String metodo) {
         this.importo = importo;
         this.note = note;
         this.data = data;
@@ -36,11 +38,11 @@ public class PagamentoEffettuato {
         this.id = id;
     }
 
-    public String getImporto() {
+    public BigDecimal getImporto() {
         return importo;
     }
 
-    public void setImporto(String importo) {
+    public void setImporto(BigDecimal importo) {
         this.importo = importo;
     }
 
