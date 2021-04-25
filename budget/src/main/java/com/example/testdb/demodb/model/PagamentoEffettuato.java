@@ -20,11 +20,19 @@ public class PagamentoEffettuato {
     @JsonProperty("metodo")
     private String metodo;
 
-    public PagamentoEffettuato(BigDecimal importo, String note, String data, String metodo) {
+    @JsonProperty("recurring")
+    private boolean recurring;
+
+    @JsonProperty("recurring_type")
+    private String recurringType;
+
+    public PagamentoEffettuato(BigDecimal importo, String note, String data, String metodo, boolean recurring, String recurringType) {
         this.importo = importo;
         this.note = note;
         this.data = data;
         this.metodo = metodo;
+        this.recurring = recurring;
+        this.recurringType = recurringType;
     }
 
     public PagamentoEffettuato() {
@@ -70,6 +78,22 @@ public class PagamentoEffettuato {
         this.metodo = metodo;
     }
 
+    public boolean isRecurring() {
+        return recurring;
+    }
+
+    public void setRecurring(boolean recurring) {
+        this.recurring = recurring;
+    }
+
+    public String getRecurringType() {
+        return recurringType;
+    }
+
+    public void setRecurringType(String recurringType) {
+        this.recurringType = recurringType;
+    }
+
     @Override
     public String toString() {
         return "PagamentoEffettuato{" +
@@ -78,8 +102,8 @@ public class PagamentoEffettuato {
                 ", note='" + note + '\'' +
                 ", data='" + data + '\'' +
                 ", metodo='" + metodo + '\'' +
+                ", recurring=" + recurring +
+                ", recurringType='" + recurringType + '\'' +
                 '}';
     }
-
-
 }

@@ -46,7 +46,7 @@ public class PagamentoTest {
         //----------------------
 
         if (idMetodo != null){
-            pagamentoDAO.insert(importo, note, data, idMetodo);
+            pagamentoDAO.insert(importo, note, data, idMetodo, false);
             List<PagamentoEffettuato> lista = pagamentoDAO.get();
             assertTrue(!lista.isEmpty());
             PagamentoEffettuato p1 = lista.get(0);
@@ -68,7 +68,7 @@ public class PagamentoTest {
         //----------------------
 
         if (idMetodo != null){
-            pagamentoDAO.insert(importo, note, data, idMetodo);
+            pagamentoDAO.insert(importo, note, data, idMetodo, false);
             List<PagamentoEffettuato> lista = pagamentoDAO.getMonth("3");
             assertTrue(!lista.isEmpty());
             PagamentoEffettuato p1 = lista.get(0);
