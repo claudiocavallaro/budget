@@ -23,3 +23,4 @@ services:
       - POSTGRES_SCHEMA=db
     volumes:
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./sql:/var/lib/postgresql

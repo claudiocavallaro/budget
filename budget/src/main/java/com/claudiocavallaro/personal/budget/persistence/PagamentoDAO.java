@@ -1,9 +1,12 @@
-package com.example.testdb.demodb.persistence;
+package com.claudiocavallaro.personal.budget.persistence;
 
-import com.example.testdb.demodb.model.PagamentoEffettuato;
+import com.claudiocavallaro.personal.budget.model.PagamentoEffettuato;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,6 +33,8 @@ public class PagamentoDAO {
             "VALUES( ?, ? , TO_DATE(?, 'yyyy-MM-dd') , ?, ?, ?);\n";
 
     private static final String SELECT_MONTH_WHERE = " and date_part('month', pe.data) = ?";
+
+    private static final String fileName = "./sql/init.sql";
 
     private PagamentoDAO() {
     }
@@ -107,10 +112,16 @@ public class PagamentoDAO {
             statement.setBoolean(5, recurring);
             statement.execute();
 
-        }catch(SQLException s) {
+            FileOutputStream fos = new FileOutputStream(fileName, true);
+            String toWrite = statement.toString() + ";\n";
+            fos.write(toWrite.getBytes());
+            fos.close();
+        }catch(SQLException | FileNotFoundException s) {
             logger.error("Formato data non corretto !! Usare yyyy-MM-dd");
             s.printStackTrace();
             flag = false;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return flag;
     }
@@ -128,10 +139,17 @@ public class PagamentoDAO {
             statement.setString(6, recurringType);
             statement.execute();
 
-        }catch(SQLException s) {
+            FileOutputStream fos = new FileOutputStream(fileName, true);
+            String toWrite = statement.toString() + ";\n";
+            fos.write(toWrite.getBytes());
+            fos.close();
+
+        }catch(SQLException | FileNotFoundException s) {
             logger.error("Formato data non corretto !! Usare yyyy-MM-dd");
             s.printStackTrace();
             flag = false;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return flag;
     }

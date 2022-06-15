@@ -1,12 +1,17 @@
-package com.example.testdb.demodb.persistence;
+package com.claudiocavallaro.personal.budget.persistence;
 
-import com.example.testdb.demodb.model.Metodo;
+import com.claudiocavallaro.personal.budget.model.Metodo;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MetodoDAO {
@@ -17,6 +22,8 @@ public class MetodoDAO {
 	private static final String SELECT_ID = "select id from budget.metodo where tipo = ?;";
 	
 	private static final String INSERT = "insert into budget.metodo(tipo) values (?);";
+
+	private static final String fileName = "./sql/init.sql";
 
 	private MetodoDAO() {
 	}
@@ -32,10 +39,16 @@ public class MetodoDAO {
 			
 			statement.setString(1, tipo);
 			statement.execute();
-			
-		}catch(SQLException s) {
+
+			FileOutputStream fos = new FileOutputStream(fileName, true);
+			String toWrite = statement.toString() + ";\n";
+			fos.write(toWrite.getBytes());
+			fos.close();
+		}catch(SQLException | FileNotFoundException s) {
 			s.printStackTrace();
 			flag = false;
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return flag;
 	}

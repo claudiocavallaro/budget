@@ -1,7 +1,7 @@
-package com.example.testdb.demodb;
+package com.claudiocavallaro.personal.budget;
 
-import com.example.testdb.demodb.model.Metodo;
-import com.example.testdb.demodb.persistence.MetodoDAO;
+import com.claudiocavallaro.personal.budget.model.Metodo;
+import com.claudiocavallaro.personal.budget.persistence.MetodoDAO;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

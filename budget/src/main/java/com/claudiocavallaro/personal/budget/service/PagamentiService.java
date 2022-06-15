@@ -1,8 +1,8 @@
-package com.example.testdb.demodb.service;
+package com.claudiocavallaro.personal.budget.service;
 
-import com.example.testdb.demodb.model.PagamentoEffettuato;
-import com.example.testdb.demodb.persistence.MetodoDAO;
-import com.example.testdb.demodb.persistence.PagamentoDAO;
+import com.claudiocavallaro.personal.budget.model.PagamentoEffettuato;
+import com.claudiocavallaro.personal.budget.persistence.MetodoDAO;
+import com.claudiocavallaro.personal.budget.persistence.PagamentoDAO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.stereotype.Service;

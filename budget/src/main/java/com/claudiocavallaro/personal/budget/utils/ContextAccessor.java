@@ -1,4 +1,4 @@
-package com.example.testdb.demodb.utils;
+package com.claudiocavallaro.personal.budget.utils;
 
 import javax.annotation.PostConstruct;
 

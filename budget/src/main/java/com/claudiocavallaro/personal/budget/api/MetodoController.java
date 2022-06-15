@@ -1,7 +1,7 @@
-package com.example.testdb.demodb.api;
+package com.claudiocavallaro.personal.budget.api;
 
-import com.example.testdb.demodb.model.Metodo;
-import com.example.testdb.demodb.service.MetodiService;
+import com.claudiocavallaro.personal.budget.model.Metodo;
+import com.claudiocavallaro.personal.budget.service.MetodiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

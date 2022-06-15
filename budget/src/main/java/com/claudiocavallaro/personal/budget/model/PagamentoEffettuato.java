@@ -1,4 +1,4 @@
-package com.example.testdb.demodb.model;
+package com.claudiocavallaro.personal.budget.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

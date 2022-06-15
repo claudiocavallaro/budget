@@ -1,4 +1,4 @@
-package com.example.testdb.demodb.api;
+package com.claudiocavallaro.personal.budget.api;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

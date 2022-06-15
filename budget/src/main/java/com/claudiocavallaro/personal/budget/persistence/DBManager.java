@@ -1,12 +1,12 @@
-package com.example.testdb.demodb.persistence;
+package com.claudiocavallaro.personal.budget.persistence;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
-import com.example.testdb.demodb.utils.PropertyService;
-import com.example.testdb.demodb.utils.Utils;
+import com.claudiocavallaro.personal.budget.utils.PropertyService;
+import com.claudiocavallaro.personal.budget.utils.Utils;
 
 
 

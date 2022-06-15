@@ -1,9 +1,9 @@
-package com.example.testdb.demodb;
+package com.claudiocavallaro.personal.budget;
 
-import com.example.testdb.demodb.model.PagamentoEffettuato;
-import com.example.testdb.demodb.persistence.DBManager;
-import com.example.testdb.demodb.persistence.MetodoDAO;
-import com.example.testdb.demodb.persistence.PagamentoDAO;
+import com.claudiocavallaro.personal.budget.model.PagamentoEffettuato;
+import com.claudiocavallaro.personal.budget.persistence.DBManager;
+import com.claudiocavallaro.personal.budget.persistence.MetodoDAO;
+import com.claudiocavallaro.personal.budget.persistence.PagamentoDAO;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
